@@ -3,6 +3,7 @@ package eu.tasgroup.springbootguide.controller;
 import eu.tasgroup.springbootguide.controller.model.DemoRequest;
 import eu.tasgroup.springbootguide.controller.model.DemoResponse;
 import eu.tasgroup.springbootguide.service.DemoService;
+import eu.tasgroup.springbootguide.service.mapper.MapperDemoDto;
 import eu.tasgroup.springbootguide.service.model.DemoRequestDto;
 import eu.tasgroup.springbootguide.service.model.DemoResponseDto;
 import jakarta.validation.Valid;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 public class DemoController {
 
     private final DemoService demoService;
+    private final MapperDemoDto mapperDemoDto;
 
     @PostMapping(
             value = "/demo",
@@ -32,15 +34,11 @@ public class DemoController {
                 "[demo] request body: [{}]",
                 request);
 
-        DemoRequestDto requestDto = new DemoRequestDto();
-        requestDto.setIuv(request.getIuv());
-        requestDto.setLocation(request.getNation() + " - " + request.getCity());
+        DemoRequestDto requestDto = mapperDemoDto.toRequestDto(request);
 
         DemoResponseDto responseDto = demoService.callDemoService(requestDto);
 
-        DemoResponse response = new DemoResponse();
-        response.setOutcome(responseDto.getOutcome());
-        response.setStatus(responseDto.getStatus());
+        DemoResponse response = mapperDemoDto.toResponse(responseDto);
 
         return ResponseEntity.ok().body(response);
     }
