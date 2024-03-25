@@ -1,8 +1,3 @@
-# Read Me First
-The following was discovered as part of building this project:
-
-* The original package name 'eu.tasgroup.springboot-guide' is invalid and this project uses 'eu.tasgroup.springbootguide' instead.
-
 # Getting Started
 
 ### Reference Documentation
