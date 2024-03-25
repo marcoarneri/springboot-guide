@@ -18,7 +18,7 @@ public class DemoService {
         validazioneSintattica(requestDto);
 
         validazioneSemantica();
-        throw new AppException(AppErrorCodeMessageEnum.PAYMENT_NOT_FOUND);
+        throw new AppException(AppErrorCodeMessageEnum.ERROR);
 
         //Implementazione logica del servizio
         //Se tutto passa senza errori setto la risposta dto da tornare al controller
