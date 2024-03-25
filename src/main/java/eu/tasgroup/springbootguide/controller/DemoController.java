@@ -2,6 +2,9 @@ package eu.tasgroup.springbootguide.controller;
 
 import eu.tasgroup.springbootguide.controller.model.DemoRequest;
 import eu.tasgroup.springbootguide.controller.model.DemoResponse;
+import eu.tasgroup.springbootguide.repository.DemoRepository;
+import eu.tasgroup.springbootguide.repository.mapper.MapperDemoEntity;
+import eu.tasgroup.springbootguide.repository.model.DemoEntity;
 import eu.tasgroup.springbootguide.service.DemoService;
 import eu.tasgroup.springbootguide.service.mapper.MapperDemoDto;
 import eu.tasgroup.springbootguide.service.model.DemoRequestDto;
@@ -23,6 +26,8 @@ public class DemoController {
 
     private final DemoService demoService;
     private final MapperDemoDto mapperDemoDto;
+    private final MapperDemoEntity mapperDemoEntity;
+    private final DemoRepository repository;
 
     @PostMapping(
             value = "/demo",
@@ -35,6 +40,10 @@ public class DemoController {
                 request);
 
         DemoRequestDto requestDto = mapperDemoDto.toRequestDto(request);
+
+        DemoEntity entity = mapperDemoEntity.toEntity(requestDto);
+
+        repository.save(entity);
 
         DemoResponseDto responseDto = demoService.callDemoService(requestDto);
 

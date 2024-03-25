@@ -12,9 +12,9 @@ public class DemoRequest {
     @Size(max = 70)
     private String iuv;
 
-    @Pattern(regexp = "(?:[A-Z]{2})")
+    @Pattern(regexp = "[A-Z]{2}")
     private String city;
 
-    @Pattern(regexp = "(?:[A-Z]{2})")
+    @Pattern(regexp = "[A-Z]{2}")
     private String nation;
 }

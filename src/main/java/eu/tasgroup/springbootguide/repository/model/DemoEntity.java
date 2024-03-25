@@ -1,4 +1,4 @@
-package eu.tasgroup.springbootguide.entity;
+package eu.tasgroup.springbootguide.repository.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -15,13 +15,10 @@ public class DemoEntity {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "PA_FISCAL_CODE", unique = true, nullable = false)
-    private String paFiscalCode;
+    @Column(name = "IUV", unique = true, nullable = false)
+    private String iuv;
 
-    @Column(name = "NAME")
-    private String name;
-
-    @Column(name = "SURNAME")
-    private String surname;
+    @Column(name = "LOCATION")
+    private String location;
 }
 
