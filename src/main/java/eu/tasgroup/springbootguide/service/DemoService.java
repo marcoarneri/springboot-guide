@@ -1,5 +1,7 @@
 package eu.tasgroup.springbootguide.service;
 
+import eu.tasgroup.springbootguide.exception.AppErrorCodeMessageEnum;
+import eu.tasgroup.springbootguide.exception.AppException;
 import eu.tasgroup.springbootguide.service.model.DemoRequestDto;
 import eu.tasgroup.springbootguide.service.model.DemoResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -16,14 +18,15 @@ public class DemoService {
         validazioneSintattica(requestDto);
 
         validazioneSemantica();
+        throw new AppException(AppErrorCodeMessageEnum.PAYMENT_NOT_FOUND);
 
         //Implementazione logica del servizio
         //Se tutto passa senza errori setto la risposta dto da tornare al controller
-        DemoResponseDto responseDto = new DemoResponseDto();
-        responseDto.setOutcome("OK");
-        responseDto.setStatus("ELABORATO");
+//        DemoResponseDto responseDto = new DemoResponseDto();
+//        responseDto.setOutcome("OK");
+//        responseDto.setStatus("ELABORATO");
 
-        return responseDto;
+//        return responseDto;
     }
 
     private void validazioneSemantica() {
