@@ -25,7 +25,7 @@ Segui questi passaggi per aggiungere JPA al tuo progetto Spring Boot:
 
 ### 2. Creazione delle Entity
 Le entità sono oggetti Java che corrispondono direttamente alle tabelle del database.
-
+ 
 - Crea le entità utilizzando l'annotazione `@Entity` ([DemoEntity.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Fentity%2FDemoEntity.java)) e definisci le proprietà della tabella come attributi della classe.
 - Un'entità deve avere un identificatore univoco che la distingua da altre istanze della stessa classe. Questo è solitamente rappresentato da un campo annotato con `@Id`.
 -  Gli attributi di un'entità rappresentano le colonne della tabella nel database. Ogni attributo può essere annotato con varie annotazioni JPA per definire il mapping dei dati.
