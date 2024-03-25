@@ -1,35 +1,34 @@
-# Creating a Spring Boot Project with Spring Initializr
+# Creazione di un Progetto Spring Boot con Spring Initializr
 
-This guide will help you create a new Spring Boot project with a basic setup using Spring Initializr.
+Questa guida ti aiuterà a creare un nuovo progetto Spring Boot con un setup di base utilizzando Spring Initializr.
 
-## Steps
+## Passaggi
 
-Follow these steps to create your Spring Boot project:
+Segui questi passaggi per creare il tuo progetto Spring Boot:
 
-1. **Access Spring Initializr**: Open your web browser and visit [Spring Initializr](https://start.spring.io/).
-
-
-2. **Project Configuration**:
-    - **Build System**: Choose between Maven and Gradle as your build system. 
-    - **Language**: Select the Java version for your project.
-    - **Spring Boot Version**: Choose the desired version of Spring Boot for your project.
-    - **Group**: This field represents the base package of your project, e.g., `com.example`.
-    - **Artifact**: The artifact ID identifies the name of your project.
-    - **Dependencies**: Select the desired dependencies for your project.
+1. **Accesso a Spring Initializr**: Apri il tuo browser web e visita [Spring Initializr](https://start.spring.io/).
 
 
-3. **Project Generation**:
-    - After configuring your project, click on the "Generate" button to generate your Spring Boot project.
+2. **Configurazione del Progetto**:
+    - **Sistema di Build**: Scegli tra Maven e Gradle come sistema di build.
+    - **Linguaggio**: Seleziona la versione di Java per il tuo progetto.
+    - **Versione di Spring Boot**: Scegli la versione desiderata di Spring Boot per il tuo progetto.
+    - **Gruppo**: Questo campo rappresenta il package base del tuo progetto, ad esempio `com.example`.
+    - **Artifact**: L'artifact ID identifica il nome del tuo progetto.
+    - **Dipendenze**: Seleziona le dipendenze desiderate per il tuo progetto.
 
 
-4. **Download the Project**:
-    - Once generated, a ZIP file containing your Spring Boot project will be downloaded.
+3. **Generazione del Progetto**:
+    - Dopo aver configurato il tuo progetto, clicca sul pulsante "Generate" per generare il tuo progetto Spring Boot.
 
 
-5. **Import the Project into an IDE**:
-    - Extract the downloaded ZIP file and import the project into your IDE. For IntelliJ IDEA, you can open the project as a Gradle or Maven project.
+4. **Scarica il Progetto**:
+    - Una volta generato, verrà scaricato un file ZIP contenente il tuo progetto Spring Boot.
+
+
+5. **Importa il Progetto nel tuo IDE**:
+    - Estrai il file ZIP scaricato e importa il progetto nel tuo IDE. Per IntelliJ IDEA, puoi aprire il progetto come progetto Gradle o Maven.
 
 
 6. **Start Developing**:
-    - Now you are ready to start developing your Spring Boot project! You can begin writing code in the generated classes and add additional dependencies as needed.
-
+    - Ora sei pronto per iniziare lo sviluppo del tuo progetto Spring Boot! Puoi iniziare a scrivere codice nelle classi generate e aggiungere ulteriori dipendenze secondo le tue esigenze.
