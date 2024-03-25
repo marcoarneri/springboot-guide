@@ -15,7 +15,7 @@ public interface DemoRepository
 //    paFiscalCode.
     DemoEntity findByPaFiscalCode(String paFiscalCode);
 
-    @Query("SELECT u FROM UserEntity u WHERE u.paFiscalCode = :paFiscalCode")
+    @Query("SELECT u FROM DemoEntity u WHERE u.paFiscalCode = :paFiscalCode")
     DemoEntity findByPaFiscalCode2(@Param("paFiscalCode") String paFiscalCode);
 //    Annotazione @Query: Questo approccio consente di scrivere query personalizzate in JPQL (Java Persistence Query Language)
 //    o SQL direttamente sopra il metodo del repository utilizzando l'annotazione @Query. Questo fornisce maggiore flessibilità
