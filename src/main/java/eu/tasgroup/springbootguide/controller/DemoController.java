@@ -42,5 +42,4 @@ public class DemoController {
 
         return ResponseEntity.ok().body(response);
     }
-
 }
