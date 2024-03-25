@@ -1,43 +1,37 @@
-# Aggiunta della Gestione degli Errori in un Progetto Spring Boot
+# Aggiunta JPA a un Progetto Spring Boot
+In questa guida, vedremo come aggiungere JPA (Java Persistence API) a un progetto Spring Boot. JPA è uno standard Java per la gestione della persistenza dei dati in applicazioni Java EE e Spring Boot fornisce un'implementazione semplice e potente di JPA per interagire con il database relazionale.
 
-In questa guida, vedremo come aggiungere la gestione degli errori a un progetto Spring Boot per fornire risposte significative e appropriate alle richieste degli utenti in caso di errori.
 ## Passaggi
 
-Segui questi passaggi per aggiungere la gestione degli errori al tuo progetto Spring Boot:
+Segui questi passaggi per aggiungere JPA al tuo progetto Spring Boot:
 
 ### 1. Aggiunta delle Dipendenze Necessarie
 
-- Per iniziare, aggiungi le seguenti dipendenze al tuo file `pom.xml` per semplificare lo sviluppo e migliorare l'efficienza del codice:
+- Per iniziare, aggiungi la seguente dipendenza al tuo file `pom.xml` per integrare JPA nel tuo progetto:
 
 ```xml
-<dependency>
-    <groupId>org.apache.commons</groupId>
-    <artifactId>commons-lang3</artifactId>
-    <version>3.12.0</version>
-</dependency>
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+</dependencies>
 ```
 
-### 2. Creazione di una Classe per la Gestione degli Errori
+### 2. Creazione delle Entity
+Le entità sono oggetti Java che corrispondono direttamente alle tabelle del database.
 
-- Crea una classe modello per rappresentare le risposte di errore restituite, questa classe dovrebbe includere i campi necessari per fornire informazioni dettagliate sull'errore, come codice di errore, messaggio di errore, timestamp e altro ancora, esempio ([ApiErrorResponse.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Fcontroller%2Fadvice%2Fmodel%2FApiErrorResponse.java)).
+- Crea le entità utilizzando l'annotazione `@Entity` ([DemoEntity.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Fentity%2FDemoEntity.java)) e definisci le proprietà della tabella come attributi della classe.
+- Un'entità deve avere un identificatore univoco che la distingua da altre istanze della stessa classe. Questo è solitamente rappresentato da un campo annotato con `@Id`.
+-  Gli attributi di un'entità rappresentano le colonne della tabella nel database. Ogni attributo può essere annotato con varie annotazioni JPA per definire il mapping dei dati.
 
-### 3. Creazione di una Classe per la Gestione degli Errori
+### 2. Creazione del Repository
+Il repository è un'interfaccia che estende `JpaRepository` e fornisce metodi per interagire con il database.
 
-- Crea una nuova classe per gestire gli errori del tuo progetto, esempio ([ApiExceptionHandler.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Fcontroller%2Fadvice%2FApiExceptionHandler.java)). 
-- Annota la tua classe di gestione degli errori con `@ControllerAdvice`. Questa annotazione consente alla classe di intercettare le eccezioni globalmente in tutta l'applicazione.
-
-### 4. Implementazione della Logica di Gestione degli Errori
-
-- All'interno della tua classe di gestione degli errori, definisci metodi annotati con `@ExceptionHandler` per gestire le diverse eccezioni che possono verificarsi nel tuo progetto.
-- All'interno dei metodi `@ExceptionHandler`, implementa la logica necessaria per gestire le eccezioni. Puoi restituire risposte HTTP personalizzate, registrare gli errori in un file di log e altro ancora.
-
-### 5. Personalizzazione delle Risposte di Errore
-
-- Crea una nuova classe per la personalizzazione delle risposte di errore in base al tipo di eccezione e al contesto dell'applicazione, esempio ([AppErrorUtil.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Futil%2FAppErrorUtil.java)).
-
-### 6. Creazione di una Eccezione Personalizzata
-
-- Crea una classe che estenda RuntimeException o un'altra classe di eccezione appropriata, esempio ([AppException.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Fexception%2FAppException.java)). Questa classe può essere utilizzata per lanciare eccezioni personalizzate all'interno del codice.
-- Assicurati che la tua classe di eccezione fornisca almeno un costruttore che accetti un parametro per il codice dell'errore o altri dettagli necessari.
-- Rilancia l'eccezione personalizzata quando si verificano errori specifici nel tuo codice.
-- Implementa il metodo che andrà a intercettare questa eccezione nel tuo ExceptionHandler.
+- Crea un'interfaccia di repository che estende `JpaRepository<Entity, ID>`, es. ([DemoRepository.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Frepository%2FDemoRepository.java)), dove Entity è il tipo dell'entità e ID è il tipo della chiave primaria.
+- All'interno dell'interfaccia repository, puoi definire metodi per eseguire operazioni di base come il recupero, l'inserimento, l'aggiornamento e l'eliminazione delle entità nel database.
