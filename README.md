@@ -9,7 +9,7 @@ Segui questi passaggi per aggiungere MapStruct al tuo progetto Spring Boot:
 ### 1. Aggiunta delle Dipendenze e Plugin Necessari
 
 - Per iniziare, aggiungi la dipendenza MapStruct al file `pom.xml` del tuo progetto:
-
+ 
 ```xml
 <dependencies>
     <dependency>
