@@ -19,14 +19,13 @@ import java.util.Locale;
 @Configuration
 public class MvcConfiguration implements WebMvcConfigurer {
 
-  List<Locale> locales = Arrays.asList(Locale.ENGLISH, Locale.ITALIAN);
-
+  List<Locale> LOCALES = Arrays.asList(Locale.ENGLISH, Locale.ITALIAN);
 
   @Bean
   public LocaleResolver localeResolver() {
     AcceptHeaderLocaleResolver acceptHeaderLocaleResolver = new AcceptHeaderLocaleResolver();
     acceptHeaderLocaleResolver.setDefaultLocale(Locale.ENGLISH);
-    acceptHeaderLocaleResolver.setSupportedLocales(locales);
+    acceptHeaderLocaleResolver.setSupportedLocales(LOCALES);
     return acceptHeaderLocaleResolver;
   }
 

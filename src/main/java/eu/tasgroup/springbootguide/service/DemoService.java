@@ -18,15 +18,14 @@ public class DemoService {
         validazioneSintattica(requestDto);
 
         validazioneSemantica();
-        throw new AppException(AppErrorCodeMessageEnum.ERROR);
 
         //Implementazione logica del servizio
         //Se tutto passa senza errori setto la risposta dto da tornare al controller
-//        DemoResponseDto responseDto = new DemoResponseDto();
-//        responseDto.setOutcome("OK");
-//        responseDto.setStatus("ELABORATO");
+        DemoResponseDto responseDto = new DemoResponseDto();
+        responseDto.setOutcome("OK");
+        responseDto.setStatus("ELABORATO");
 
-//        return responseDto;
+        return responseDto;
     }
 
     private void validazioneSemantica() {
@@ -35,6 +34,7 @@ public class DemoService {
 
     private void validazioneSintattica(DemoRequestDto requestDto) {
         //Implementazione validazione sitattica e logica di validazione della request
+        throw new AppException(AppErrorCodeMessageEnum.BAD_REQUEST);
     }
 
 }
