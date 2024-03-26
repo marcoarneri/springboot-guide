@@ -83,7 +83,7 @@ public class MockExpectation {
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class TestMockExpectation {
     @Test
-    public void NewDebtPositionMock_OK() {
+    public void DemoMock_OK() {
         MockExpectation expectation = new MockExpectation(mockServerClient);
         expectation.setUpExpectation("POST", "/endPoint", 200);
 
