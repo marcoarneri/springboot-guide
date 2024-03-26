@@ -1,4 +1,5 @@
-README.md
+Jpa_README.md
+Docker_README.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/

@@ -10,15 +10,19 @@ import lombok.Data;
 public class DemoRequest {
 
     @Schema(example = "IUV123456", description = "Identificativo univoco")
-    @NotBlank
+    @NotBlank(message = "{iuv.notBlank}")
     @Size(max = 70)
     private String iuv;
 
     @Schema(example = "MI", description = "Citta")
-    @Pattern(regexp = "(?:[A-Z]{2})")
+    @Pattern(regexp = "([A-Z]{2})")
     private String city;
 
     @Schema(example = "IT", description = "Nazione")
-    @Pattern(regexp = "(?:[A-Z]{2})")
+    @Pattern(regexp = "([A-Z]{2})")
     private String nation;
+
+    @Schema(example = "noticeID123", description = "noticeID")
+    @NotBlank(message = "{noticeId.notBlank}")
+    private String noticeId;
 }

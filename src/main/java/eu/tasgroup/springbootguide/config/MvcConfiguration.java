@@ -67,6 +67,7 @@ public class MvcConfiguration implements WebMvcConfigurer {
     messageSource.setUseCodeAsDefaultMessage(true);
     return messageSource;
   }
+
   @Primary
   @Bean
   @Override

@@ -1,9 +1,18 @@
 package eu.tasgroup.springbootguide.controller;
 
+import eu.tasgroup.springbootguide.controller.mapper.DemoControllerMapper;
 import eu.tasgroup.springbootguide.controller.model.DemoRequest;
 import eu.tasgroup.springbootguide.controller.model.DemoResponse;
+import eu.tasgroup.springbootguide.controller.model.FullResponse;
+import eu.tasgroup.springbootguide.repository.DemoRepository;
+import eu.tasgroup.springbootguide.repository.mapper.MapperDemoEntity;
+import eu.tasgroup.springbootguide.repository.model.DemoEntity;
 import eu.tasgroup.springbootguide.service.DemoService;
 import eu.tasgroup.springbootguide.service.mapper.MapperDemoDto;
+import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
+import eu.tasgroup.springbootguide.service.dto.DemoResponseDto;
+import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
+import eu.tasgroup.springbootguide.service.dto.DemoResponseDto;
 import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
 import eu.tasgroup.springbootguide.service.dto.DemoResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,9 +21,16 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
+import eu.tasgroup.springbootguide.service.dto.DemoResponseDto;
+import eu.tasgroup.springbootguide.service.dto.FullResponseDto;
+import eu.tasgroup.springbootguide.service.dto.ParamsDto;
+import eu.tasgroup.springbootguide.util.DemoConstants;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -30,6 +46,9 @@ public class DemoController {
 
     private final DemoService demoService;
     private final MapperDemoDto mapperDemoDto;
+
+    @Autowired
+    DemoControllerMapper controllerMapper;
 
     @Operation(
             operationId = "demo",
@@ -63,5 +82,20 @@ public class DemoController {
         DemoResponse response = mapperDemoDto.toResponse(responseDto);
 
         return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping(value ="/get/iuv/{iuv}/noticeId/{noticeId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<FullResponse> getIuvAndnoticeId(
+
+            @PathVariable(DemoConstants.IUV)
+            @NotBlank(message = "{iuv.notBlank}")String iuv,
+
+            @PathVariable(DemoConstants.NOTICE_ID)
+            @NotBlank(message = "{noticeId.notBlank}") String noticeId){
+        ParamsDto paramsDto = controllerMapper.toParamsDto(iuv,noticeId);
+        FullResponseDto responseDto = demoService.getIuvAndLocation(paramsDto);
+        FullResponse response = controllerMapper.toFullResponse(responseDto);
+
+      return ResponseEntity.ok().body(response);
     }
 }
