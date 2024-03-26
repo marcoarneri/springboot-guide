@@ -35,3 +35,28 @@ Il repository è un'interfaccia che estende `JpaRepository` e fornisce metodi pe
 
 - Crea un'interfaccia di repository che estende `JpaRepository<Entity, ID>`, es. ([DemoRepository.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Frepository%2FDemoRepository.java)), dove Entity è il tipo dell'entità e ID è il tipo della chiave primaria.
 - All'interno dell'interfaccia repository, puoi definire metodi per eseguire operazioni di base come il recupero, l'inserimento, l'aggiornamento e l'eliminazione delle entità nel database.
+
+### 3. Scrivere Query con JpaRepository
+
+- Query Metodi Derivati: JpaRepository supporta la creazione di query mediante metodi derivati dal nome del metodo.
+
+```
+DemoEntity findByIuv(String iuv);
+```
+
+- JPQL (Java Persistence Query Language): le query JPQL operano sugli oggetti delle entità definite nelle classi Java e sono indipendenti dal database sottostante.
+
+```
+@Query("SELECT d FROM DemoEntity d WHERE d.iuv = :iuv")
+DemoEntity findByIuvJPQL(@Param("iuv") String iuv);
+```
+
+- Native Query: le query SQL nativa operano direttamente sulle tabelle e i dati nel database. Esiste il rischio che le query native non siano più compatibili se si cambia il tipo di database o la struttura del database stesso. Di conseguenza, è generalmente consigliato utilizzare query JPQL quando possibile.
+
+```
+@Query(value = "SELECT * FROM DEMO WHERE IUV = :iuv", nativeQuery = true)
+DemoEntity findByIuvNativeQuery(@Param("iuv") String iuv);
+```
+
+
+
