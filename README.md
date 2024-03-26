@@ -1,7 +1,7 @@
 # Creazione di un Progetto Spring Boot con Spring Initializr
 
 Questa guida ti aiuterà a creare un nuovo progetto Spring Boot con un setup di base utilizzando Spring Initializr.
-
+***
 ## Passaggi
 
 Segui questi passaggi per creare il tuo progetto Spring Boot:
