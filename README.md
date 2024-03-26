@@ -52,7 +52,7 @@ DemoEntity findByIuvJPQL(@Param("iuv") String iuv);
 ```
 
 - Native Query: le query SQL nativa operano direttamente sulle tabelle e i dati nel database. Esiste il rischio che le query native non siano più compatibili se si cambia il tipo di database o la struttura del database stesso. Di conseguenza, è generalmente consigliato utilizzare query JPQL quando possibile.
- 
+  
 ```
 @Query(value = "SELECT * FROM DEMO WHERE IUV = :iuv", nativeQuery = true)
 DemoEntity findByIuvNativeQuery(@Param("iuv") String iuv);
