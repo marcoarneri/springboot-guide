@@ -10,6 +10,18 @@ import eu.tasgroup.springbootguide.repository.model.DemoEntity;
 import eu.tasgroup.springbootguide.service.DemoService;
 import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
 import eu.tasgroup.springbootguide.service.dto.DemoResponseDto;
+import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
+import eu.tasgroup.springbootguide.service.dto.DemoResponseDto;
+import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
+import eu.tasgroup.springbootguide.service.dto.DemoResponseDto;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
+import eu.tasgroup.springbootguide.service.dto.DemoResponseDto;
 import eu.tasgroup.springbootguide.service.dto.FullResponseDto;
 import eu.tasgroup.springbootguide.service.dto.ParamsDto;
 import eu.tasgroup.springbootguide.service.mapper.MapperDemoDto;
@@ -24,6 +36,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "Demo spring boot", description = "Demo spring boot project")
 @RestController
 @RequestMapping("/api/v1")
 @Slf4j
@@ -33,11 +46,25 @@ public class DemoController {
 
     private final DemoService demoService;
     private final MapperDemoDto mapperDemoDto;
-    private final MapperDemoEntity mapperDemoEntity;
-    private final DemoRepository repository;
+
     @Autowired
     DemoControllerMapper controllerMapper;
 
+    @Operation(
+            operationId = "demo",
+            summary = "demo POST call",
+            description = "example of POST rest api")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Success",
+                            content = {
+                                    @Content(
+                                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                            schema = @Schema(implementation = DemoResponse.class))
+                            })
+            })
     @PostMapping(
             value = "/demo",
             consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -49,10 +76,6 @@ public class DemoController {
                 request);
 
         DemoRequestDto requestDto = mapperDemoDto.toRequestDto(request);
-
-        DemoEntity entity = mapperDemoEntity.toEntity(requestDto);
-
-        repository.save(entity);
 
         DemoResponseDto responseDto = demoService.callDemoService(requestDto);
 
