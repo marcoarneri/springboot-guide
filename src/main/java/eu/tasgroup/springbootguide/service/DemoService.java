@@ -2,10 +2,6 @@ package eu.tasgroup.springbootguide.service;
 
 import eu.tasgroup.springbootguide.exception.AppErrorCodeMessageEnum;
 import eu.tasgroup.springbootguide.exception.AppException;
-import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
-import eu.tasgroup.springbootguide.service.dto.DemoResponseDto;
-import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
-import eu.tasgroup.springbootguide.service.dto.DemoResponseDto;
 import eu.tasgroup.springbootguide.repository.DemoRepository;
 import eu.tasgroup.springbootguide.repository.mapper.MapperDemoEntity;
 import eu.tasgroup.springbootguide.repository.model.DemoEntity;
@@ -45,7 +41,6 @@ public class DemoService {
     }
 
     public FullResponseDto getIuvAndLocation (ParamsDto paramsDto){
-
         String iuv = paramsDto.getIuv();
         String noticeId = paramsDto.getNoticeId();
 
