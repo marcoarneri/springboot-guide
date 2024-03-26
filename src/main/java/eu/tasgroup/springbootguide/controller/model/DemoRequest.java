@@ -17,4 +17,6 @@ public class DemoRequest {
 
     @Pattern(regexp = "[A-Z]{2}")
     private String nation;
+
+    private String noticeId;
 }

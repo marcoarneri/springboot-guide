@@ -4,7 +4,7 @@ import lombok.Data;
 
 
 @Data
-public class DemoRequestDto {
+public class DemoGetResponseDto {
 
     private String iuv;
     private String location;

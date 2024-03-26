@@ -3,6 +3,9 @@ package eu.tasgroup.springbootguide.repository.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.Instant;
 
 @Data
 @Entity
@@ -20,5 +23,12 @@ public class DemoEntity {
 
     @Column(name = "LOCATION")
     private String location;
+    
+    @Column(name = "NOTICE_ID",nullable = false)
+    private String noticeId;
+
+    @CreationTimestamp
+    @Column(name = "INSERTED_TIMESTAMP")
+    private Instant insertedTimestamp;
 }
 

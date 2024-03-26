@@ -1,13 +1,11 @@
 package eu.tasgroup.springbootguide.service;
 
-import eu.tasgroup.springbootguide.exception.AppErrorCodeMessageEnum;
-import eu.tasgroup.springbootguide.exception.AppException;
+import eu.tasgroup.springbootguide.repository.DemoRepository;
 import eu.tasgroup.springbootguide.repository.mapper.MapperDemoEntity;
-import eu.tasgroup.springbootguide.service.mapper.MapperDemoDto;
-import eu.tasgroup.springbootguide.service.model.DemoRequestDto;
-import eu.tasgroup.springbootguide.service.model.DemoResponseDto;
+import eu.tasgroup.springbootguide.service.model.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,6 +13,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class DemoService {
 
+    @Autowired
+    DemoRepository demoRepository;
+
+    @Autowired
+    MapperDemoEntity mapperDemoEntity;
 
     public DemoResponseDto callDemoService(DemoRequestDto requestDto){
 
@@ -28,6 +31,20 @@ public class DemoService {
         DemoResponseDto responseDto = new DemoResponseDto();
         responseDto.setOutcome("OK");
         responseDto.setStatus("ELABORATO");
+        return responseDto;
+    }
+
+    public FullResponseDto getIuvAndLocation (ParamsDto paramsDto){
+
+        String iuv = paramsDto.getIuv();
+        String noticeId = paramsDto.getNoticeId();
+
+        DemoGetResponseDto getByIuv = mapperDemoEntity.toGetResponseDto(demoRepository.findByIuv(iuv));
+        DemoGetResponseDto getByNoticeId = mapperDemoEntity.toGetResponseDto(demoRepository.findByNoticeId(noticeId));
+
+        FullResponseDto responseDto = new FullResponseDto();
+        responseDto.setResponseDtoIuv(getByIuv);
+        responseDto.setResponseDtoNoticeId(getByNoticeId);
         return responseDto;
     }
 
