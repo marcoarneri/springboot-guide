@@ -1,10 +1,10 @@
-package eu.tasgroup.springbootguide.service.model;
+package eu.tasgroup.springbootguide.service.dto;
 
 import lombok.Data;
 
 
 @Data
-public class DemoGetResponseDto {
+public class DemoRequestDto {
 
     private String iuv;
     private String location;

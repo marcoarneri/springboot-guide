@@ -1,8 +1,8 @@
 package eu.tasgroup.springbootguide.repository.mapper;
 
 import eu.tasgroup.springbootguide.repository.model.DemoEntity;
-import eu.tasgroup.springbootguide.service.model.DemoGetResponseDto;
-import eu.tasgroup.springbootguide.service.model.DemoRequestDto;
+import eu.tasgroup.springbootguide.service.dto.DemoGetResponseDto;
+import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

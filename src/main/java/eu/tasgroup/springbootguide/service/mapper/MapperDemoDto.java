@@ -2,8 +2,8 @@ package eu.tasgroup.springbootguide.service.mapper;
 
 import eu.tasgroup.springbootguide.controller.model.DemoRequest;
 import eu.tasgroup.springbootguide.controller.model.DemoResponse;
-import eu.tasgroup.springbootguide.service.model.DemoRequestDto;
-import eu.tasgroup.springbootguide.service.model.DemoResponseDto;
+import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
+import eu.tasgroup.springbootguide.service.dto.DemoResponseDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;

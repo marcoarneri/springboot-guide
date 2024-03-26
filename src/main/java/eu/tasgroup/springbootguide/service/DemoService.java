@@ -2,7 +2,7 @@ package eu.tasgroup.springbootguide.service;
 
 import eu.tasgroup.springbootguide.repository.DemoRepository;
 import eu.tasgroup.springbootguide.repository.mapper.MapperDemoEntity;
-import eu.tasgroup.springbootguide.service.model.*;
+import eu.tasgroup.springbootguide.service.dto.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

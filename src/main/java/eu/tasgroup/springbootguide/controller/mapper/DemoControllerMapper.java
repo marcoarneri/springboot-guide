@@ -1,8 +1,8 @@
 package eu.tasgroup.springbootguide.controller.mapper;
 
 import eu.tasgroup.springbootguide.controller.model.FullResponse;
-import eu.tasgroup.springbootguide.service.model.FullResponseDto;
-import eu.tasgroup.springbootguide.service.model.ParamsDto;
+import eu.tasgroup.springbootguide.service.dto.FullResponseDto;
+import eu.tasgroup.springbootguide.service.dto.ParamsDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
