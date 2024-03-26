@@ -6,6 +6,8 @@ import eu.tasgroup.springbootguide.service.DemoService;
 import eu.tasgroup.springbootguide.service.mapper.MapperDemoDto;
 import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
 import eu.tasgroup.springbootguide.service.dto.DemoResponseDto;
+import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
+import eu.tasgroup.springbootguide.service.dto.DemoResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
