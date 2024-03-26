@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 import java.time.Instant;
 
 @Entity
-@Table(name = "ACA_ACCESS_LOG")
+@Table(name = "DEMO_ACCESS_LOG")
 @Data
 @NoArgsConstructor
 public class AccessLogEntity {
 
   @SequenceGenerator(
           name = "AccessLogEntityGenerator",
-          sequenceName = "SEQ_ACA_ACCESS_LOG")
+          sequenceName = "SEQ_DEMO_ACCESS_LOG")
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO, generator = "AccessLogEntityGenerator")
   @Column(name = "ID")
