@@ -1,5 +1,6 @@
 package eu.tasgroup.springbootguide.controller.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -8,16 +9,20 @@ import lombok.Data;
 @Data
 public class DemoRequest {
 
-    @NotBlank
+    @Schema(example = "IUV123456", description = "Identificativo univoco")
+    @NotBlank(message = "{iuv.notBlank}")
     @Size(max = 70)
     private String iuv;
 
-    @Pattern(regexp = "[A-Z]{2}")
+    @Schema(example = "MI", description = "Citta")
+    @Pattern(regexp = "([A-Z]{2})")
     private String city;
 
-    @Pattern(regexp = "[A-Z]{2}")
+    @Schema(example = "IT", description = "Nazione")
+    @Pattern(regexp = "([A-Z]{2})")
     private String nation;
 
+    @Schema(example = "noticeID123", description = "noticeID")
     @NotBlank(message = "{noticeId.notBlank}")
     private String noticeId;
 }

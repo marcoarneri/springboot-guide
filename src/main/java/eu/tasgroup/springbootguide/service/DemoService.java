@@ -1,5 +1,9 @@
 package eu.tasgroup.springbootguide.service;
 
+import eu.tasgroup.springbootguide.exception.AppErrorCodeMessageEnum;
+import eu.tasgroup.springbootguide.exception.AppException;
+import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
+import eu.tasgroup.springbootguide.service.dto.DemoResponseDto;
 import eu.tasgroup.springbootguide.repository.DemoRepository;
 import eu.tasgroup.springbootguide.repository.mapper.MapperDemoEntity;
 import eu.tasgroup.springbootguide.repository.model.DemoEntity;
@@ -25,7 +29,6 @@ public class DemoService {
         validazioneSintattica(requestDto);
 
         validazioneSemantica();
-//        throw new AppException(AppErrorCodeMessageEnum.ERROR);
 
         DemoEntity entity = mapperDemoEntity.toEntity(requestDto);
 
@@ -59,6 +62,8 @@ public class DemoService {
 
     private void validazioneSintattica(DemoRequestDto requestDto) {
         //Implementazione validazione sitattica e logica di validazione della request
+        if (requestDto.getIuv().equals("IUV")) {
+            throw new AppException(AppErrorCodeMessageEnum.BAD_REQUEST);
+        }
     }
-
 }
