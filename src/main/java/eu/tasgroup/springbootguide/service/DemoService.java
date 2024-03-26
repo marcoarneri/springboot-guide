@@ -34,7 +34,9 @@ public class DemoService {
 
     private void validazioneSintattica(DemoRequestDto requestDto) {
         //Implementazione validazione sitattica e logica di validazione della request
-        throw new AppException(AppErrorCodeMessageEnum.BAD_REQUEST);
+        if (requestDto.getIuv().equals("IUV")) {
+            throw new AppException(AppErrorCodeMessageEnum.BAD_REQUEST);
+        }
     }
 
 }
