@@ -28,14 +28,14 @@ Segui questi passaggi per aggiungere la parte MVC al tuo progetto Spring Boot:
     </dependency>
 </dependencys>
 ```
-
+***
 ### 2. Creazione del Controller
 Il controller gestisce le richieste HTTP degli utenti e coordina l'interazione tra il modello e la vista.
 
 - Crea una nuova classe per il controller, ad esempio [DemoController.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Fcontroller%2FDemoController.java).
 - All'interno del controller, definisci i metodi per gestire le diverse richieste HTTP, come `@GetMapping`, `@PostMapping`, ecc.
 - Definisci i modelli di richiesta ([DemoRequest.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Fcontroller%2Fmodel%2FDemoRequest.java)) e di risposta ([DemoResponse.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Fcontroller%2Fmodel%2FDemoResponse.java)) utilizzati nei metodi del controller per mappare i dati inviati dall'utente e le risposte restituite al client.
-
+***
 ### 3. Creazione del Servizio
 Il servizio contiene la logica di business dell'applicazione e comunica con il repository dei dati.
 - Crea una nuova classe per il servizio, ad esempio [DemoService.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Fservice%2FDemoService.java).
