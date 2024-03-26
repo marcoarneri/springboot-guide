@@ -2,6 +2,7 @@ package eu.tasgroup.springbootguide.service;
 
 import eu.tasgroup.springbootguide.repository.DemoRepository;
 import eu.tasgroup.springbootguide.repository.mapper.MapperDemoEntity;
+import eu.tasgroup.springbootguide.repository.model.DemoEntity;
 import eu.tasgroup.springbootguide.service.dto.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +26,10 @@ public class DemoService {
 
         validazioneSemantica();
 //        throw new AppException(AppErrorCodeMessageEnum.ERROR);
+
+        DemoEntity entity = mapperDemoEntity.toEntity(requestDto);
+
+        demoRepository.save(entity);
 
 //        Implementazione logica del servizio
 //        Se tutto passa senza errori setto la risposta dto da tornare al controller

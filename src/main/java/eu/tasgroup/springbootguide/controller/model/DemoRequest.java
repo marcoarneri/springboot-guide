@@ -18,5 +18,6 @@ public class DemoRequest {
     @Pattern(regexp = "[A-Z]{2}")
     private String nation;
 
+    @NotBlank(message = "{noticeId.notBlank}")
     private String noticeId;
 }

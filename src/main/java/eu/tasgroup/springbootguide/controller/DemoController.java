@@ -33,8 +33,7 @@ public class DemoController {
 
     private final DemoService demoService;
     private final MapperDemoDto mapperDemoDto;
-    private final MapperDemoEntity mapperDemoEntity;
-    private final DemoRepository repository;
+
     @Autowired
     DemoControllerMapper controllerMapper;
 
@@ -49,10 +48,6 @@ public class DemoController {
                 request);
 
         DemoRequestDto requestDto = mapperDemoDto.toRequestDto(request);
-
-        DemoEntity entity = mapperDemoEntity.toEntity(requestDto);
-
-        repository.save(entity);
 
         DemoResponseDto responseDto = demoService.callDemoService(requestDto);
 
