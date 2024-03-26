@@ -9,7 +9,7 @@ Segui questi passaggi per aggiungere la parte MVC al tuo progetto Spring Boot:
 ### 1. Aggiunta delle Dipendenze Necessarie
 
 - Per iniziare, aggiungi le seguenti dipendenze al tuo file `pom.xml` per gestire la validazione dei dati e semplificare la creazione di classi modello:
-
+ 
 ```xml
 <dependencys>
     <!--VALIDATION-->
