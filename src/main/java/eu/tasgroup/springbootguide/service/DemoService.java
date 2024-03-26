@@ -38,5 +38,4 @@ public class DemoService {
             throw new AppException(AppErrorCodeMessageEnum.BAD_REQUEST);
         }
     }
-
 }
