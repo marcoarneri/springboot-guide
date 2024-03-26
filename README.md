@@ -1,7 +1,7 @@
 # Aggiunta di MapStruct a un Progetto Spring Boot
 
 In questa guida, vedremo come aggiungere e utilizzare MapStruct, un framework di mappatura degli oggetti in Java, in un progetto Spring Boot.
-
+***
 ## Passaggi
 
 Segui questi passaggi per aggiungere MapStruct al tuo progetto Spring Boot:
@@ -50,7 +50,7 @@ Segui questi passaggi per aggiungere MapStruct al tuo progetto Spring Boot:
     </plugins>
 </build>
 ```
-
+***
 ### 2. Creazione della Classe Astratta Mapper
 La classe astratta Mapper è una classe fornita da MapStruct che contiene i metodi di mappatura tra oggetti.
 - Crea la classe astratta Mapper ([MapperDemoDto.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Fservice%2Fmapper%2FMapperDemoDto.java)) annotando la classe con `@Mapper` per indicare a MapStruct di generare l'implementazione della classe per te.  Si può configurare con vari attributi, come `componentModel`, che specifica il modello di componente da utilizzare (ad esempio, "spring" per l'integrazione con Spring), e `unmappedTargetPolicy`, che gestisce il comportamento quando si verificano campi non mappati.
