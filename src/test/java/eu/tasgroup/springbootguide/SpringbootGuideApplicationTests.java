@@ -3,20 +3,20 @@ package eu.tasgroup.springbootguide;
 import eu.tasgroup.springbootguide.controller.advice.model.ApiErrorResponse;
 import eu.tasgroup.springbootguide.controller.model.DemoRequest;
 import eu.tasgroup.springbootguide.controller.model.DemoResponse;
-import eu.tasgroup.springbootguide.repository.DemoRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import static eu.tasgroup.springbootguide.util.GeneratedParams.*;
 
 import static eu.tasgroup.springbootguide.constants.TestConstants.BASE_URL;
 import static eu.tasgroup.springbootguide.constants.TestConstants.POST_ENDPOINT;
+import static eu.tasgroup.springbootguide.util.GeneratedParams.generateIuv;
+import static eu.tasgroup.springbootguide.util.GeneratedParams.generateNoticeId;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -49,7 +49,7 @@ class SpringbootGuideApplicationTests {
 				demoRequest,
 				DemoResponse.class);
 
-		assertEquals(200, response.getStatusCodeValue());
+		assertThat( response.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(response.getBody()).isNotNull();
 		assertThat(response.getBody().getOutcome()).isEqualTo("OK");
 		assertThat(response.getBody().getStatus()).isEqualTo("ELABORATO");
@@ -73,7 +73,7 @@ class SpringbootGuideApplicationTests {
 				demoRequest,
 				DemoResponse.class);
 
-		assertEquals(200, response.getStatusCodeValue());
+		assertThat( response.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(response.getBody()).isNotNull();
 		assertThat(response.getBody().getOutcome()).isEqualTo("OK");
 		assertThat(response.getBody().getStatus()).isEqualTo("ELABORATO");
@@ -86,7 +86,7 @@ class SpringbootGuideApplicationTests {
 
 		ResponseEntity<ApiErrorResponse> response2 = restTemplate.postForEntity(
 				url,
-				demoRequest,
+				demoRequest2,
 				ApiErrorResponse.class);
 
 		assertThat(response2.getBody().getAppErrorCode()).isEqualTo("DEMO-0500");

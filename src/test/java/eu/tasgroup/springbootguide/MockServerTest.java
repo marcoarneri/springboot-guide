@@ -1,6 +1,5 @@
 package eu.tasgroup.springbootguide;
 
-import eu.tasgroup.springbootguide.controller.model.DemoRequest;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -14,11 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-
 import static eu.tasgroup.springbootguide.constants.TestConstants.BASE_URL;
 import static eu.tasgroup.springbootguide.constants.TestConstants.POST_ENDPOINT;
-import static eu.tasgroup.springbootguide.util.GeneratedParams.generateIuv;
-import static eu.tasgroup.springbootguide.util.GeneratedParams.generateNoticeId;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
 import static org.mockserver.verify.VerificationTimes.once;
