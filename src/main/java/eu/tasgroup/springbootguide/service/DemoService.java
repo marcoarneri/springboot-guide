@@ -2,8 +2,8 @@ package eu.tasgroup.springbootguide.service;
 
 import eu.tasgroup.springbootguide.exception.AppErrorCodeMessageEnum;
 import eu.tasgroup.springbootguide.exception.AppException;
-import eu.tasgroup.springbootguide.service.model.DemoRequestDto;
-import eu.tasgroup.springbootguide.service.model.DemoResponseDto;
+import eu.tasgroup.springbootguide.service.dto.DemoRequestDto;
+import eu.tasgroup.springbootguide.service.dto.DemoResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
