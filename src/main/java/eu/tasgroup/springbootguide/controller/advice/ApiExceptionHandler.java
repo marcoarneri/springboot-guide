@@ -48,7 +48,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
                                                                   + "    \"timestamp\": \"2023-10-09T08:01:39.421224Z\",\n"
                                                                   + "    \"httpStatusCode\": 500,\n"
                                                                   + "    \"httpStatusDescription\": \"Internal Server Error\",\n"
-                                                                  + "    \"appErrorCode\": \"MPA-0500\",\n"
+                                                                  + "    \"appErrorCode\": \"DEMO-0500\",\n"
                                                                   + "    \"message\": \"An unexpected error has occurred. Please contact"
                                                                   + " support\"\n"
                                                                   + "}")
@@ -67,7 +67,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
                                                                   + "    \"timestamp\": \"2023-10-09T07:53:14.077792Z\",\n"
                                                                   + "    \"httpStatusCode\": 400,\n"
                                                                   + "    \"httpStatusDescription\": \"Bad Request\",\n"
-                                                                  + "    \"appErrorCode\": \"MPA-0400\",\n"
+                                                                  + "    \"appErrorCode\": \"DEMO-0400\",\n"
                                                                   + "    \"message\": \"Bad request\",\n"
                                                                   + "    \"errors\": [\n"
                                                                   + "        {\n"
@@ -90,7 +90,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
                                                                   + "    \"timestamp\": \"2023-10-09T07:53:43.367312Z\",\n"
                                                                   + "    \"httpStatusCode\": 404,\n"
                                                                   + "    \"httpStatusDescription\": \"Not Found\",\n"
-                                                                  + "    \"appErrorCode\": \"MPA-0404\",\n"
+                                                                  + "    \"appErrorCode\": \"DEMO-0404\",\n"
                                                                   + "    \"message\": \"Request POST /api/v1/..... not found\"\n"
                                                                   + "}")
                                           })
