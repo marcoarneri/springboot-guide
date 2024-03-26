@@ -1,7 +1,7 @@
 # Aggiunta openapi a un progetto springboot
 
 In questa guida, vedremo come aggiungere la parte di openapi a un progetto Spring Boot.
-
+***
 ## Passaggi
 
 Segui questi passaggi per aggiungere la parte di openapi al tuo progetto Spring Boot:
@@ -17,7 +17,7 @@ Segui questi passaggi per aggiungere la parte di openapi al tuo progetto Spring 
     <version>2.2.0</version>
 </dependency>
 ```
-
+***
 ### 2. Avvia l'applicazione
 
 - avvia l'applicazione e raggiungi l'endpoint: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html) per vedere lo swagger UI
