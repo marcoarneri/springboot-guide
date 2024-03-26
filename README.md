@@ -1,23 +1,26 @@
-# Aggiunta openapi a un progetto springboot
+# Aggiunta della Gestione dei Log a un Progetto Spring Boot
 
-In questa guida, vedremo come aggiungere la parte di openapi a un progetto Spring Boot.
-
+Questa guida ti illustrerà come integrare la gestione dei log in un progetto Spring Boot per monitorare e registrare le attività e gli eventi all'interno dell'applicazione.
 ## Passaggi
 
-Segui questi passaggi per aggiungere la parte di openapi al tuo progetto Spring Boot:
+Segui questi passaggi per aggiungere la gestione dei log al tuo progetto Spring Boot:
 
 ### 1. Aggiunta delle Dipendenze Necessarie
 
-- Per iniziare, aggiungi le seguenti dipendenze al tuo file `pom.xml` per gestire la validazione dei dati e semplificare la creazione di classi modello:
+- Per iniziare, aggiungi le seguenti dipendenze al tuo file `pom.xml`:
 
 ```xml
-<dependency>
-    <groupId>org.springdoc</groupId>
-    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-    <version>2.2.0</version>
-</dependency>
+<dependencys>
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.1.0</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>6.0.0.Final</version>
+    </dependency>
+</dependencys>
 ```
-
-### 2. Avvia l'applicazione
-
-- avvia l'applicazione e raggiungi l'endpoint: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html) per vedere lo swagger UI
