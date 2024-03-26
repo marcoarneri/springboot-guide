@@ -3,6 +3,7 @@ package eu.tasgroup.springbootguide;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockserver.client.MockServerClient;
@@ -39,6 +40,12 @@ public class MockServerTest {
     public static void stopServer(){
         mockServer.stop();
     }
+
+    @BeforeEach
+    public void cleanServer() {
+        mockServer.reset();
+    }
+
     @Test
     void testd_Demo_Post_Ok() {
         int port = mockServer.getPort();
