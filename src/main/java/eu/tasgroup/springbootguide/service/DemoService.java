@@ -30,8 +30,6 @@ public class DemoService {
 
     public DemoResponseDto callDemoService(DemoRequestDto requestDto){
 
-        validazioneSintattica(requestDto.getIuv());
-
         validazioneSemantica(requestDto.getIuv());
 
         DemoEntity entity = mapperDemoEntity.toEntity(requestDto);
@@ -64,7 +62,7 @@ public class DemoService {
         Optional<DemoEntity> all = demoRepository.findOne(spec);
 
         if(all.isEmpty()){
-            throw new AppException(AppErrorCodeMessageEnum.BAD_REQUEST);
+            throw new AppException(AppErrorCodeMessageEnum.RECORD_BY_IUV_NOT_FOUND);
         }
         return mapperDemoEntity.toGetResponseDto(all.get());
     }
@@ -89,7 +87,7 @@ public class DemoService {
     private void validazioneSintattica(String iuv) {
         //Implementazione validazione sitattica e logica di validazione della request
         if (iuv.equals("IUV")) {
-            throw new AppException(AppErrorCodeMessageEnum.IUV_DUPLICATE);
+            throw new AppException(AppErrorCodeMessageEnum.BAD_REQUEST);
         }
     }
 }
