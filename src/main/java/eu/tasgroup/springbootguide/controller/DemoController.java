@@ -74,9 +74,9 @@ public class DemoController {
     }
 
     @Operation(
-            operationId = "demo",
+            operationId = "getIuvAndnoticeId",
             summary = "demo Get call",
-            description = "example of Get rest api")
+            description = "example of GET rest api")
     @ApiResponses(
             value = {
                     @ApiResponse(
@@ -103,9 +103,9 @@ public class DemoController {
     }
 
     @Operation(
-            operationId = "demo",
+            operationId = "getAllByLocation",
             summary = "demo Get call",
-            description = "example of Get rest api")
+            description = "example of GET rest api")
     @ApiResponses(
             value = {
                     @ApiResponse(
