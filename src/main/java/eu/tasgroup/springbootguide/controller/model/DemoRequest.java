@@ -17,11 +17,13 @@ public class DemoRequest {
     private String iuv;
 
     @Schema(example = "MI", description = "Citta")
-    @Pattern(regexp = "([A-Z]{2})")
+    @Pattern(regexp = "([A-Z]{2})", message = "il campo city deve essere di 2 caratteri e maiuscolo: esempio MI")
+    @NotBlank(message = "{city.notBlank}")
     private String city;
 
     @Schema(example = "IT", description = "Nazione")
-    @Pattern(regexp = "([A-Z]{2})")
+    @Pattern(regexp = "([A-Z]{2})", message = "il campo nation deve essere di 2 caratteri e maiuscolo: esempio IT")
+    @NotBlank(message = "{nation.notBlank}")
     private String nation;
 
     @Schema(example = "noticeID123", description = "noticeID")
