@@ -52,7 +52,6 @@ public class DemoService {
         String noticeId = paramsDto.getNoticeId();
 
         validazioneSintattica(iuv);
-//        validazioneSemantica(iuv);
 
         Specification<DemoEntity> spec;
 
@@ -83,14 +82,14 @@ public class DemoService {
         //Implementazione validazione semantica e logica (a db)
         Optional<DemoEntity> byIuv = demoRepository.findByIuv(iuv);
         if(byIuv.isPresent()){
-            throw new AppException(AppErrorCodeMessageEnum.BAD_REQUEST);
+            throw new AppException(AppErrorCodeMessageEnum.IUV_DUPLICATE);
         }
     }
 
     private void validazioneSintattica(String iuv) {
         //Implementazione validazione sitattica e logica di validazione della request
         if (iuv.equals("IUV")) {
-            throw new AppException(AppErrorCodeMessageEnum.BAD_REQUEST);
+            throw new AppException(AppErrorCodeMessageEnum.IUV_DUPLICATE);
         }
     }
 }
