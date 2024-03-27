@@ -84,14 +84,29 @@ public class DemoController {
         return ResponseEntity.ok().body(response);
     }
 
+
+    @Operation(
+            operationId = "demo",
+            summary = "demo GET call with path variables",
+            description = "example of GET rest api")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Success",
+                            content = {
+                                    @Content(
+                                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                            schema = @Schema(implementation = FullResponse.class))
+                            })
+            })
     @GetMapping(value ="/get/iuv/{iuv}/noticeId/{noticeId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<FullResponse> getIuvAndnoticeId(
-
             @PathVariable(DemoConstants.IUV)
             @NotBlank(message = "{iuv.notBlank}")String iuv,
-
             @PathVariable(DemoConstants.NOTICE_ID)
             @NotBlank(message = "{noticeId.notBlank}") String noticeId){
+
         ParamsDto paramsDto = controllerMapper.toParamsDto(iuv,noticeId);
         FullResponseDto responseDto = demoService.getIuvAndLocation(paramsDto);
         FullResponse response = controllerMapper.toFullResponse(responseDto);
