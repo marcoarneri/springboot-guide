@@ -5,11 +5,17 @@ import eu.tasgroup.springbootguide.exception.AppException;
 import eu.tasgroup.springbootguide.repository.DemoRepository;
 import eu.tasgroup.springbootguide.repository.mapper.MapperDemoEntity;
 import eu.tasgroup.springbootguide.repository.model.DemoEntity;
+import eu.tasgroup.springbootguide.repository.specification.DemoSpecifications;
 import eu.tasgroup.springbootguide.service.dto.*;
+import eu.tasgroup.springbootguide.service.mapper.MapperDemoDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -24,9 +30,9 @@ public class DemoService {
 
     public DemoResponseDto callDemoService(DemoRequestDto requestDto){
 
-        validazioneSintattica(requestDto);
+        validazioneSintattica(requestDto.getIuv());
 
-        validazioneSemantica();
+        validazioneSemantica(requestDto.getIuv());
 
         DemoEntity entity = mapperDemoEntity.toEntity(requestDto);
 
@@ -40,27 +46,50 @@ public class DemoService {
         return responseDto;
     }
 
-    public FullResponseDto getIuvAndLocation (ParamsDto paramsDto){
+    public DemoGetByIuvAndNoticeIdDto getIuvAndNoticeId(ParamsDto paramsDto){
+
         String iuv = paramsDto.getIuv();
         String noticeId = paramsDto.getNoticeId();
 
-        DemoGetResponseDto getByIuv = mapperDemoEntity.toGetResponseDto(demoRepository.findByIuv(iuv));
-        DemoGetResponseDto getByNoticeId = mapperDemoEntity.toGetResponseDto(demoRepository.findByNoticeId(noticeId));
+        validazioneSintattica(iuv);
 
-        FullResponseDto responseDto = new FullResponseDto();
-        responseDto.setResponseDtoIuv(getByIuv);
-        responseDto.setResponseDtoNoticeId(getByNoticeId);
+        Specification<DemoEntity> spec;
+
+        spec = Specification.where(DemoSpecifications.iuv(iuv));
+
+        if(noticeId != null) {
+            spec = spec.and(DemoSpecifications.noticeId(noticeId));
+        }
+
+        Optional<DemoEntity> all = demoRepository.findOne(spec);
+
+        if(all.isEmpty()){
+            throw new AppException(AppErrorCodeMessageEnum.BAD_REQUEST);
+        }
+        return mapperDemoEntity.toGetResponseDto(all.get());
+    }
+
+    public DemoGetAllByLocationDto getAllByLocation(String location){
+
+        List<DemoGetByIuvAndNoticeIdDto> getAllByLocation = mapperDemoEntity.toGetResponseDtoList(demoRepository.findAllByLocation(location));
+        DemoGetAllByLocationDto responseDto = new DemoGetAllByLocationDto();
+        responseDto.setResponseDtoList(getAllByLocation);
+
         return responseDto;
     }
 
-    private void validazioneSemantica() {
+    private void validazioneSemantica(String iuv) {
         //Implementazione validazione semantica e logica (a db)
+        Optional<DemoEntity> byIuv = demoRepository.findByIuv(iuv);
+        if(byIuv.isPresent()){
+            throw new AppException(AppErrorCodeMessageEnum.IUV_DUPLICATE);
+        }
     }
 
-    private void validazioneSintattica(DemoRequestDto requestDto) {
+    private void validazioneSintattica(String iuv) {
         //Implementazione validazione sitattica e logica di validazione della request
-        if (requestDto.getIuv().equals("IUV")) {
-            throw new AppException(AppErrorCodeMessageEnum.BAD_REQUEST);
+        if (iuv.equals("IUV")) {
+            throw new AppException(AppErrorCodeMessageEnum.IUV_DUPLICATE);
         }
     }
 }
