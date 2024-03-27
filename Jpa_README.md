@@ -50,6 +50,12 @@ DemoEntity findByIuvJPQL(@Param("iuv") String iuv);
 @Query(value = "SELECT * FROM DEMO WHERE IUV = :iuv", nativeQuery = true)
 DemoEntity findByIuvNativeQuery(@Param("iuv") String iuv);
 ```
+***
+### 5. Scrivere Specification con JpaSpecificationExecutor
+Le Specification consentono di definire criteri di ricerca basati su condizioni dinamiche che possono essere combinate in modo flessibile durante l'esecuzione delle query.
+Questo è particolarmente utile quando si devono gestire query complesse o quando le condizioni di ricerca possono variare in base alle esigenze dell'applicazione o degli utenti.
 
-
-
+- **Estensione del Repository:** estendi la tua interfaccia repository con `JpaSpecificationExecutor`. Questa interfaccia permette di eseguire query basate sulle Specifiche, esempio ([DemoRepository.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Frepository%2FDemoRepository.java)).
+- **Creazione delle Specifiche:** crea una classe dedicata per definire le Specifiche. Questa classe può contenere metodi statici che restituiscono oggetti Specification<T>, ognuno dei quali rappresenta una condizione di ricerca specifica, esempio ([DemoSpecifications.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Frepository%2Fspecification%2FDemoSpecifications.java)).
+- **Combinazione delle Specifiche:** utilizza metodi come `and()`, `or()` per combinare le Specifiche e definire criteri di ricerca complessi.
+- **Utilizzo delle Specifiche nei Servizi:** utilizza le Specifiche nei tuoi servizi o controller per eseguire query dinamiche basate sui criteri definiti, esempio ([DemoService.java](src%2Fmain%2Fjava%2Feu%2Ftasgroup%2Fspringbootguide%2Fservice%2FDemoService.java)).
