@@ -89,7 +89,7 @@ class SpringbootGuideApplicationTests {
 				demoRequest2,
 				ApiErrorResponse.class);
 
-		assertThat(response2.getBody().getAppErrorCode()).isEqualTo("DEMO-0500");
-		assertThat(response2.getBody().getMessage()).isEqualTo( "An unexpected error has occurred. Please contact support");
+		assertThat(response2.getBody().getAppErrorCode()).isEqualTo("DEMO-1001");
+		assertThat(response2.getBody().getMessage()).isEqualTo( "Iuv duplicate");
 	}
 }
