@@ -11,7 +11,7 @@ public class DemoSpecifications{
     return (root, query, builder) -> builder.equal(root.get("noticeId"), noticeId);
   }
 
-    public static Specification<DemoEntity> iuv (String iuv) {
-        return (root, query, builder) -> builder.equal(root.get("iuv"), iuv);
-    }
+  public static Specification<DemoEntity> iuv (String iuv) {
+      return (root, query, builder) -> builder.equal(root.get("iuv"), iuv);
+  }
 }
