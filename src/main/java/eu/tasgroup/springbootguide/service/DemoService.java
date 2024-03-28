@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor
 public class DemoService {
 
     public DemoResponseDto callDemoService(DemoRequestDto requestDto){
