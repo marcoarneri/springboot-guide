@@ -12,6 +12,8 @@ public class DemoService {
 
     public DemoResponseDto callDemoService(DemoRequestDto requestDto){
 
+        log.info("requestDto: [{}]", requestDto.toString());
+
         validazioneSintattica(requestDto);
 
         validazioneSemantica();
