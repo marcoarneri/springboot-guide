@@ -35,9 +35,7 @@ public class DemoController {
 
     private final DemoService demoService;
     private final MapperDemoDto mapperDemoDto;
-
-    @Autowired
-    DemoControllerMapper controllerMapper;
+    private final DemoControllerMapper controllerMapper;
 
     @Operation(
             operationId = "demo",

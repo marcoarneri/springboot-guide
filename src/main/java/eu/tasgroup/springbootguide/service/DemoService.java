@@ -22,11 +22,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class DemoService {
 
-    @Autowired
-    DemoRepository demoRepository;
-
-    @Autowired
-    MapperDemoEntity mapperDemoEntity;
+    private final DemoRepository demoRepository;
+    private final MapperDemoEntity mapperDemoEntity;
 
     public DemoResponseDto callDemoService(DemoRequestDto requestDto){
 
