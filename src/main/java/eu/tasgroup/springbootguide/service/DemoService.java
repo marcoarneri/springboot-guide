@@ -7,7 +7,6 @@ import eu.tasgroup.springbootguide.repository.mapper.MapperDemoEntity;
 import eu.tasgroup.springbootguide.repository.model.DemoEntity;
 import eu.tasgroup.springbootguide.repository.specification.DemoSpecifications;
 import eu.tasgroup.springbootguide.service.dto.*;
-import eu.tasgroup.springbootguide.service.mapper.MapperDemoDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

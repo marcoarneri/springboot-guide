@@ -19,6 +19,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.camel.ProducerTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,7 @@ public class DemoController {
 
     private final DemoService demoService;
     private final MapperDemoDto mapperDemoDto;
+    private final ProducerTemplate producerTemplate;
 
     @Autowired
     DemoControllerMapper controllerMapper;
@@ -64,13 +66,25 @@ public class DemoController {
                 "[demo] request body: [{}]",
                 request);
 
-        DemoRequestDto requestDto = mapperDemoDto.toRequestDto(request);
+        String routingEndpoint;
 
-        DemoResponseDto responseDto = demoService.callDemoService(requestDto);
+        if (request.getNoticeId().equals("valoreSpeciale")) {
+            // Invia la richiesta al servizio speciale
+            routingEndpoint = "direct:processDemoResponse";
+            DemoResponseDto responseDto = producerTemplate.requestBody(routingEndpoint, request, DemoResponseDto.class);
 
-        DemoResponse response = mapperDemoDto.toResponse(responseDto);
+            // Mappa la risposta e restituisci al client
+            DemoResponse response = mapperDemoDto.toResponse(responseDto);
+            return ResponseEntity.ok().body(response);
+        }else {
+            DemoRequestDto requestDto = mapperDemoDto.toRequestDto(request);
 
-        return ResponseEntity.ok().body(response);
+            DemoResponseDto responseDto = demoService.callDemoService(requestDto);
+
+            DemoResponse response = mapperDemoDto.toResponse(responseDto);
+
+            return ResponseEntity.ok().body(response);
+        }
     }
 
     @Operation(
