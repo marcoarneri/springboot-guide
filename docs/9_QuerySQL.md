@@ -5,7 +5,10 @@ Le query SQL sono comandi utilizzati per interagire con un database relazionale 
 
 <!-- TOC -->
 * [CREATE](#create)
+* [DROP](#drop)
 * [INSERT](#insert)
+* [UPDATE](#update)
+* [DELETE](#delete)
 * [SELECT](#select)
 * [FROM](#from)
 * [WHERE](#where)
@@ -42,7 +45,7 @@ Due tabelle utili a cui farà riferimento la guida.
 ***
 
 ### CREATE
-Le query di creazione vengono utilizzate per creare nuove tabelle nel database.
+Le query `CREATE` vengono utilizzate per creare nuove tabelle nel database.
 ```roomsql
 CREATE TABLE courses (
     course_id INT PRIMARY KEY,
@@ -60,10 +63,25 @@ CREATE TABLE students (
 ```
 ***
 
-### INSERT
-Le query di inserimento vengono utilizzate per aggiungere nuove righe di dati a una tabella del database.
+### DROP
+Le query `DROP` vengono utilizzate per cancellare una o più tabelle all'interno del database.
 
 ```roomsql
+DROP TABLE students;
+```
+***
+
+### INSERT
+Le query `INSERT` vengono utilizzate per aggiungere nuove righe di dati a una tabella del database.
+
+```roomsql
+INSERT INTO courses (course_id, course_name, professor_id)
+VALUES 
+  (101, 'Math', 1),
+  (102, 'History', 2),
+  (103, 'Biology', 3),
+  (104, 'Physics', 1);
+
 INSERT INTO students (student_id, student_name, course_id)
 VALUES 
   (1, 'John', 101),
@@ -72,6 +90,27 @@ VALUES
   (4, 'Sarah', 103),
   (5, 'Michael', 102);
 ```
+***
+
+### UPDATE
+Le query UPDATE vengono utilizzate per modificare i dati in una tabella.
+
+```roomsql
+UPDATE students
+SET student_name = 'Jack'
+WHERE student_id = 1;
+```
+***
+
+### DELETE
+Le query `DELETE` vengono utilizzate per rimuovere una o più righe da una tabella esistente all'interno di un database.
+
+```roomsql
+--Questa query eliminerà la riga nella tabella "students" in cui il valore della colonna student_id è uguale a 5--
+DELETE FROM students
+WHERE student_id = 5;
+```
+***
 
 ### SELECT
 La clausola `SELECT` è utilizzata per selezionare dati da una o più tabelle del database.
@@ -293,22 +332,3 @@ WHERE course_id IN (SELECT course_id FROM students GROUP BY course_id HAVING COU
 | History     |
 
 ***
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
